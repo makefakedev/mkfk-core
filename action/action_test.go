@@ -1,10 +1,20 @@
 package action
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+	"log/slog"
+)
+
+type MockAction struct {}
+
+func GetMockAction(t *testing.T) *MockAction {
+	t.Helper()
+	return new(MockAction)
+}
 
 func TestAction(t *testing.T) {
-	var testAction Action
-	if testAction != nil {
-		t.Error("test action is not nil")
-	}
+	var mockAction *MockAction = GetMockAction(t)
+	var testMockAction Action = mockAction
+	slog.Debug(fmt.Sprintf("%v", testMockAction))
 }
