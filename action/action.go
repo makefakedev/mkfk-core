@@ -1,7 +1,7 @@
 package action
 
-type Result interface {}
+type Result interface{}
 
-type Action interface{
+type Action interface {
 	Act() Result
 }
