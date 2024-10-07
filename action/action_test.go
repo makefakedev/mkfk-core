@@ -8,6 +8,10 @@ import (
 
 type MockAction struct {}
 
+func (MockAction) Act() Result {
+	return "result"
+}
+
 func GetMockAction(t *testing.T) *MockAction {
 	t.Helper()
 	return new(MockAction)
@@ -16,5 +20,6 @@ func GetMockAction(t *testing.T) *MockAction {
 func TestAction(t *testing.T) {
 	var mockAction *MockAction = GetMockAction(t)
 	var testMockAction Action = mockAction
-	slog.Debug(fmt.Sprintf("%v", testMockAction))
+	var testActionResult Result = testMockAction.Act()
+	slog.Debug(fmt.Sprintf("%v", testActionResult))
 }

@@ -1,3 +1,7 @@
 package action
 
-type Action interface{}
+type Result interface {}
+
+type Action interface{
+	Act() Result
+}
